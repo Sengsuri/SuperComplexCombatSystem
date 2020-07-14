@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/eric-griffin/eric-griffin-idle.png</File>
+    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/eric-griffin/eric-griffin-walking-back.png</File>
+    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/eric-griffin/eric-griffin-walking-forward.png</File>
+    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/eric-griffin/eric-griffin-walking-left.png</File>
+    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/eric-griffin/eric-griffin-walking-right.png</File>
+    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/evil-square.png</File>
+    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/SpriteFonts/defaultSpriteFont.spritefont</File>
+    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/tiles/Grass.png</File>
+    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/tiles/Wall.png</File>
+    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/UI/BUTTON.png</File>
+    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/Weapons/bullet.png</File>
+    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/Weapons/bullet-casing.png</File>
+    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/Weapons/katana.png</File>
+    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/Weapons/m911.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
