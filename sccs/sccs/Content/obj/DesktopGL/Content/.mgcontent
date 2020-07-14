@@ -4,20 +4,20 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/eric-griffin/eric-griffin-idle.png</File>
-    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/eric-griffin/eric-griffin-walking-back.png</File>
-    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/eric-griffin/eric-griffin-walking-forward.png</File>
-    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/eric-griffin/eric-griffin-walking-left.png</File>
-    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/eric-griffin/eric-griffin-walking-right.png</File>
-    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/evil-square.png</File>
-    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/SpriteFonts/defaultSpriteFont.spritefont</File>
-    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/tiles/Grass.png</File>
-    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/tiles/Wall.png</File>
-    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/UI/BUTTON.png</File>
-    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/Weapons/bullet.png</File>
-    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/Weapons/bullet-casing.png</File>
-    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/Weapons/katana.png</File>
-    <File>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/Weapons/m911.png</File>
+    <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/eric-griffin/eric-griffin-idle.png</File>
+    <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/eric-griffin/eric-griffin-walking-back.png</File>
+    <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/eric-griffin/eric-griffin-walking-forward.png</File>
+    <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/eric-griffin/eric-griffin-walking-left.png</File>
+    <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/eric-griffin/eric-griffin-walking-right.png</File>
+    <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/evil-square.png</File>
+    <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/SpriteFonts/defaultSpriteFont.spritefont</File>
+    <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/tiles/Grass.png</File>
+    <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/tiles/Wall.png</File>
+    <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/UI/BUTTON.png</File>
+    <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/Weapons/bullet.png</File>
+    <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/Weapons/bullet-casing.png</File>
+    <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/Weapons/katana.png</File>
+    <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/Weapons/m911.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

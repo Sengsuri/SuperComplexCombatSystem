@@ -6,11 +6,13 @@ namespace sccs
     {
         public Matrix Transform { get; private set; }
 
-        private GameState gameState;
+        private static int screenWidth;
+        private static int screenHeight;
 
-        public Camera(GameState gameState)
+        public Camera(int _screenWidth, int _screenHeight)
         {
-            this.gameState = gameState;
+            screenWidth = _screenWidth;
+            screenHeight = _screenHeight;
         }
 
         public void Follow(Entity target)
@@ -23,8 +25,8 @@ namespace sccs
 
             ///offset the target to the middle of the screen
             var offset = Matrix.CreateTranslation(
-                gameState.screenWidth / 2,
-                gameState.screenHeight / 2,
+                screenWidth / 2,
+                screenHeight / 2,
                 0);
 
             Transform = position * offset;

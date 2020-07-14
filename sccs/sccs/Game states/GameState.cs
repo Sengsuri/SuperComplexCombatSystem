@@ -28,8 +28,12 @@ namespace sccs
 
         protected Camera camera;
 
-        public int screenHeight;
-        public int screenWidth;
+        public static int gameHeight;
+        public static int gameWidth;
+
+        private static int windowWidth;
+        private static int windowHeight;
+
         private float scale;
 
 
@@ -38,40 +42,39 @@ namespace sccs
         {
             physicsEngine = new PhysicsEngine();
 
+            windowWidth = graphicsDevice.Viewport.Width;
+            windowHeight = graphicsDevice.Viewport.Height;
+
             renderTarget = new RenderTarget2D(graphicsDevice, 800, 450);
 
-            screenWidth = renderTarget.Width;
-            screenHeight = renderTarget.Height;
+            gameWidth = renderTarget.Width;
+            gameHeight = renderTarget.Height;
 
             interactables = new List<IPhysics>();
 
             entities = new List<Entity>();
 
-            camera = new Camera(this);
+            camera = new Camera(gameWidth, gameHeight);
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
 
-            camera.Follow(entities[0]);
 
-            foreach (Entity entity in entities)
-            {
-                entity.Update(gameTime, interactables);
-            }
         }
 
-        //TODO the render target doesn't render target
+        // the render target doesn't render target
+        //cause: the graphicsDevice viewport for whatever reason changes to the render target dimensions, messing with the scale
+        //fix: isolate the viewport dimensions into its own variable before the render target is created
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             base.Draw(gameTime, spriteBatch);
 
-            scale = 1f / ((float)renderTarget.Height / graphicsDevice.Viewport.Height);
+            scale = 1f / ((float)renderTarget.Height / windowHeight);
 
             graphicsDevice.SetRenderTarget(null);
             graphicsDevice.Clear(Color.CornflowerBlue);
-
 
             spriteBatch.Begin();
             spriteBatch.Draw(renderTarget, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);

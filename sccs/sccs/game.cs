@@ -12,8 +12,7 @@ namespace sccs
         SpriteBatch spriteBatch;
 
         private State currentState;
-        private State nextState;        
-
+        private State nextState;
 
         public game()
         {
@@ -78,6 +77,7 @@ namespace sccs
                 nextState = null;
             }
 
+
             currentState.Update(gameTime);
 
             base.Update(gameTime);
@@ -90,14 +90,7 @@ namespace sccs
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-
-
-
-
-
             currentState.Draw(gameTime, spriteBatch);
-
-
 
             base.Draw(gameTime);
         }

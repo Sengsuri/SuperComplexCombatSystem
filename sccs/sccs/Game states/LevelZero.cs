@@ -64,13 +64,19 @@ namespace sccs
             {
                 entity.LoadTexture(content);
             }
+            interactables.Add((IPhysics)entities.Find(x => x is Player));
             interactables.Add((IPhysics)entities.Find(x => x is EvilSquare));
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+            camera.Follow(entities[0]);
 
+            foreach (Entity entity in entities)
+            {
+                entity.Update(gameTime, interactables);
+            }
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -78,6 +84,7 @@ namespace sccs
 
             graphicsDevice.SetRenderTarget(renderTarget);
             graphicsDevice.Clear(Color.CornflowerBlue);
+
             spriteBatch.Begin(transformMatrix: camera.Transform);
             tileMap.Draw(spriteBatch);
             foreach (Entity entity in entities)
@@ -86,6 +93,8 @@ namespace sccs
             }
 
             spriteBatch.End();
+
+
             base.Draw(gameTime, spriteBatch);///This line must always be last in the method
         }
     }

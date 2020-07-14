@@ -56,11 +56,6 @@ namespace sccs
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 _game.Exit();
 
-            if (gameTime.TotalGameTime.TotalSeconds == 1)
-            {
-                _game.ChangeState(new MenuState(_game, graphicsDevice, content));
-            }
-
             foreach (var button in buttons)
             {
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/Weapons/m911.png</SourceFile>
+  <SourceFile>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/Weapons/m911.png</SourceFile>
   <SourceTime>2020-07-04T22:52:38.8215446-05:00</SourceTime>
-  <DestFile>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/bin/DesktopGL/Content/Weapons/m911.xnb</DestFile>
-  <DestTime>2020-07-08T14:57:08.2379363-05:00</DestTime>
+  <DestFile>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/bin/DesktopGL/Content/Weapons/m911.xnb</DestFile>
+  <DestTime>2020-07-14T14:13:02.9234248-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T10:35:54-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
