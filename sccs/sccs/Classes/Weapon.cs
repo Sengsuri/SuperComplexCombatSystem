@@ -15,6 +15,8 @@ namespace sccs
         {
             this.texture = texture;
             Position = startingPosition;
+            Scale = 1;
         }
+
     }
 }

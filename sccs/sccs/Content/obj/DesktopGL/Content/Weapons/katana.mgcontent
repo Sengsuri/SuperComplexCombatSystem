@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/Weapons/katana.png</SourceFile>
-  <SourceTime>2020-07-04T22:52:55.0417361-05:00</SourceTime>
+  <SourceTime>2020-07-15T14:29:08.2716543-05:00</SourceTime>
   <DestFile>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/bin/DesktopGL/Content/Weapons/katana.xnb</DestFile>
-  <DestTime>2020-07-14T14:13:02.9164181-05:00</DestTime>
+  <DestTime>2020-07-15T14:29:19.9554606-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T10:35:54-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

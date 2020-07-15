@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/eric-griffin/eric-griffin-walking-forward.png</SourceFile>
+  <SourceFile>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/eric-griffin/eric-griffin-walking-forward.png</SourceFile>
   <SourceTime>2020-06-24T14:31:39.0255439-05:00</SourceTime>
-  <DestFile>C:/Users/aweso/Desktop/Code stuff/sccs/sccs/Content/bin/DesktopGL/eric-griffin/eric-griffin-walking-forward.xnb</DestFile>
-  <DestTime>2020-07-08T14:45:27.2467279-05:00</DestTime>
+  <DestFile>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/bin/DesktopGL/eric-griffin/eric-griffin-walking-forward.xnb</DestFile>
+  <DestTime>2020-07-15T14:29:12.4515926-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T10:35:54-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

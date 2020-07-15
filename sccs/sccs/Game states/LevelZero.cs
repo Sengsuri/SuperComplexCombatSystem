@@ -16,6 +16,8 @@ namespace sccs
     /// Levels are inherited from GameState, which is inherited from State.
     public class LevelZero : GameState
     {
+
+
         TileMap tileMap;
         public LevelZero(game _game, GraphicsDevice graphicsDevice, ContentManager content)
              : base(_game, graphicsDevice, content)
@@ -57,9 +59,17 @@ namespace sccs
             #endregion
 
 
+
+
+
             entities.Add(new Player(new Vector2(50, 50), physicsEngine));
             entities.Add(new EvilSquare(new Vector2(100, 100), physicsEngine));
 
+            //weapons will be managed by each character, they are added within the levelState for testing purposes
+            entities.Add(new Weapon(content.Load<Texture2D>("Weapons/bullet"), new Vector2(200, 100)));//bullet
+            entities.Add(new Weapon(content.Load<Texture2D>("Weapons/bullet-casing"), new Vector2(210, 100)));//bullet casing
+            entities.Add(new Weapon(content.Load<Texture2D>("Weapons/katana"), new Vector2(220, 100)));//katana
+            entities.Add(new Weapon(content.Load<Texture2D>("Weapons/m911"), new Vector2(230, 100)));//gun
             foreach (Entity entity in entities)
             {
                 entity.LoadTexture(content);
@@ -71,7 +81,7 @@ namespace sccs
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            camera.Follow(entities[0]);
+            camera.Follow(entities.Find(x => x is Player));
 
             foreach (Entity entity in entities)
             {
