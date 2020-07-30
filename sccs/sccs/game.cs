@@ -14,6 +14,12 @@ namespace sccs
         private State currentState;
         private State nextState;
 
+        public Matrix scale;
+
+        const int targetWidth = 800;
+
+        const int targetHeight = 450;
+
         public game()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -31,12 +37,17 @@ namespace sccs
 
             base.Initialize();///initializes the graphics device and calls LoadContent(). should have all the code below so the tilemap textures are loaded before it's generated          
 
-
             IsMouseVisible = true;
-            graphics.IsFullScreen = false;
+            graphics.IsFullScreen = true;
             graphics.PreferredBackBufferWidth = 1920;///this is the actual size of the window 
             graphics.PreferredBackBufferHeight = 1080;
             graphics.ApplyChanges();
+
+
+            float scaleX = graphics.PreferredBackBufferWidth / targetWidth;
+            float scaleY = graphics.PreferredBackBufferHeight / targetHeight;
+            scale = Matrix.CreateScale(scaleX, scaleY, 1);
+
         }
 
         /// <summary>

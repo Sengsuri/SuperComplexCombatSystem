@@ -12,19 +12,33 @@ using System.Threading.Tasks;
 
 namespace sccs
 {
+
+
     class Player : Entity, IPhysics
     {
+        public Character character;
+
+        Input Input;
+
+        /// <summary>
+        /// The PowerPoint system determines how powerful a loadout is and is for balancing purposes
+        /// </summary>
+        public int powerPoints { get { return (int)character.powerPoints; } }
+
+        const int sprintStamina = 10;
+
         public Rectangle collisionBox
         {
             get
             {
                 if (animationEngine != null)
                 {
-                    return new Rectangle((int)Position.X + 16, (int)Position.Y + 16, animationEngine.Width, animationEngine.Height);
+                    return
+                        new Rectangle((int)Position.X + 16, (int)Position.Y + 16, animationEngine.Width, animationEngine.Height);
                 }
-                else if (texture != null)
+                else if (character.texture != null)
                 {
-                    return new Rectangle((int)Position.X, (int)Position.Y, texture.Width, texture.Height);
+                    return new Rectangle((int)Position.X, (int)Position.Y, character.texture.Width, character.texture.Height);
                 }
                 else throw new Exception("Error making collisionBox, textures/animation are null");
             }
@@ -34,56 +48,69 @@ namespace sccs
 
         public Player(Vector2 startingPosition, PhysicsEngine physicsEngine)
         {
-            Speed = 2;
             Scale = 1;
             Position = startingPosition;
             this.physicsEngine = physicsEngine;
+
+            Input = new Input();
         }
 
 
         public override void LoadTexture(ContentManager content)
         {
-            animations = new Dictionary<string, Animation>()
-            {
-                {"Idle",new Animation (content.Load<Texture2D>("eric-griffin/eric-griffin-idle"),2 , new float[]{5f, .5f })},
-                {"WalkUp",new Animation (content.Load<Texture2D>("eric-griffin/eric-griffin-walking-forward"), 4, .15f)},
-                {"WalkDown",new Animation (content.Load<Texture2D>("eric-griffin/eric-griffin-walking-back"), 1, .15f)},
-                {"WalkRight",new Animation (content.Load<Texture2D>("eric-griffin/eric-griffin-walking-right"), 4, .15f)},
-                {"WalkLeft",new Animation (content.Load<Texture2D>("eric-griffin/eric-griffin-walking-left"), 4, .15f)}
-            };
+            animationEngine = new AnimationEngine();
 
-            animationEngine = new AnimationEngine(animations["Idle"]);
+            character = new EricGriffin(animationEngine);
+            character.LoadTextures(content);
+            Speed = character.speed;
+            if (character.texture != null)
+            {
+                texture = character.texture;
+            }
+            animationEngine.animation = character.animations["Idle"];
 
         }
         public override void Update(GameTime gameTime, List<IPhysics> entities)
         {
             KeyboardState keyState = Keyboard.GetState();
 
+            int boost = 0;
             Velocity = Vector2.Zero;
 
-            if (keyState.IsKeyDown(Keys.W))
+
+            if (keyState.IsKeyDown(Input.Sprint) && character.stamina > 0)
             {
-                Velocity.Y = -Speed;
+                boost = character.maxSpeed - Speed;
             }
-            if (keyState.IsKeyDown(Keys.A))
+            if (keyState.IsKeyDown(Input.Up))
             {
-                Velocity.X = -Speed;
+                Velocity.Y = -Speed - boost;
             }
-            if (keyState.IsKeyDown(Keys.S))
+            if (keyState.IsKeyDown(Input.Left))
             {
-                Velocity.Y = Speed;
+                Velocity.X = -Speed - boost;
             }
-            if (keyState.IsKeyDown(Keys.D))
+            if (keyState.IsKeyDown(Input.Down))
             {
-                Velocity.X = Speed;
+                Velocity.Y = Speed + boost;
+            }
+            if (keyState.IsKeyDown(Input.Right))
+            {
+                Velocity.X = Speed + boost;
+            }
+
+            if (boost > 0)
+            {
+                character.SubtractStamina(sprintStamina, gameTime);
             }
 
             animationEngine.Update(gameTime);
 
+            character.Regen(gameTime);
+
             physicsEngine.detectCollision(entities, this);
 
             Move(Velocity);
-
 
             base.Update(gameTime, entities);
         }
@@ -97,30 +124,29 @@ namespace sccs
         {
             if (velocity == Vector2.Zero)
             {
-                animationEngine.Play(animations["Idle"]);
+                character.Idle();
             }
             else if (velocity.X != 0)
             {
                 if (velocity.X < 0)
                 {
-                    animationEngine.Play(animations["WalkLeft"]);
+                    character.WalkLeft();
                 }
                 if (velocity.X > 0)
                 {
-                    animationEngine.Play(animations["WalkRight"]);
+                    character.WalkRight();
                 }
             }
             else if (velocity.Y < 0)
             {
-                animationEngine.Play(animations["WalkDown"]);
+                character.WalkDown();
             }
             else if (velocity.Y > 0)
             {
-                animationEngine.Play(animations["WalkUp"]);
+                character.WalkUp();
             }
 
             Position += velocity;
-
         }
 
         public void onCollision(IPhysics entity)
@@ -129,6 +155,7 @@ namespace sccs
             {
                 Velocity = Vector2.Zero;
             }
+            //implement enemy and bullet collisions
         }
     }
 }

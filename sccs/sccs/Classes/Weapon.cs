@@ -10,6 +10,8 @@ namespace sccs
 {
     public class Weapon : Entity
     {
+        public int damage;
+
         //temp constructor for creative purposes, might be permanent
         public Weapon(Texture2D texture, Vector2 startingPosition)
         {

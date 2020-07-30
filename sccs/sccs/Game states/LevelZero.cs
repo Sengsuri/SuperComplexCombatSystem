@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,6 @@ namespace sccs
     /// Levels are inherited from GameState, which is inherited from State.
     public class LevelZero : GameState
     {
-
 
         TileMap tileMap;
         public LevelZero(game _game, GraphicsDevice graphicsDevice, ContentManager content)
@@ -59,9 +59,6 @@ namespace sccs
             #endregion
 
 
-
-
-
             entities.Add(new Player(new Vector2(50, 50), physicsEngine));
             entities.Add(new EvilSquare(new Vector2(100, 100), physicsEngine));
 
@@ -83,6 +80,11 @@ namespace sccs
             base.Update(gameTime);
             camera.Follow(entities.Find(x => x is Player));
 
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
+                _game.Exit();
+            }
+
             foreach (Entity entity in entities)
             {
                 entity.Update(gameTime, interactables);
@@ -92,18 +94,17 @@ namespace sccs
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
 
-            graphicsDevice.SetRenderTarget(renderTarget);
+            graphicsDevice.SetRenderTarget(null);
             graphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin(transformMatrix: camera.Transform);
+
+            spriteBatch.Begin(transformMatrix: camera.Transform * _game.scale);
             tileMap.Draw(spriteBatch);
             foreach (Entity entity in entities)
             {
                 entity.Draw(spriteBatch);
             }
-
             spriteBatch.End();
-
 
             base.Draw(gameTime, spriteBatch);///This line must always be last in the method
         }

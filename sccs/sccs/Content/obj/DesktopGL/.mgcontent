@@ -14,12 +14,16 @@
     <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/tiles/Grass.png</File>
     <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/tiles/Wall.png</File>
     <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/UI/BUTTON.png</File>
+    <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/UI/UIBar.png</File>
+    <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/UI/UIBarBackground.png</File>
     <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/Weapons/bullet.png</File>
     <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/Weapons/bullet-casing.png</File>
     <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/Weapons/katana.png</File>
     <File>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/Weapons/m911.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

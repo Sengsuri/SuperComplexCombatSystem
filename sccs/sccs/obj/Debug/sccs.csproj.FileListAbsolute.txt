@@ -64,3 +64,5 @@ C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\s
 C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\sccs.pdb
 C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll
 C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\obj\Debug\sccs.csproj.CopyComplete
+C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\UI\UIBar.xnb
+C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\UI\UIBarBackground.xnb

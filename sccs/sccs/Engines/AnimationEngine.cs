@@ -6,17 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sccs.Engines
+namespace sccs
 {
     /// <summary>
     /// This is what takes the animation and it's properties and runs it
     /// </summary>
     public class AnimationEngine
 
-
-
     {
-        Animation animation;
+        public Animation animation { get; set; }
 
         private float timer;
 
@@ -26,10 +24,12 @@ namespace sccs.Engines
         public int Height { get { return animation.frameHeight; } }
 
 
-
-        public AnimationEngine(Animation animation)
+        /// <summary>
+        /// The parameter is for the starting animation
+        /// </summary>
+        /// <param name="animation"></param>
+        public AnimationEngine()
         {
-            this.animation = animation;
         }
 
         public void Draw(SpriteBatch spriteBatch)

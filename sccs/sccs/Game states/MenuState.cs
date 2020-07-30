@@ -30,7 +30,6 @@ namespace sccs
 
             var quit = new Button(content.Load<Texture2D>("UI/BUTTON"), content.Load<SpriteFont>("SpriteFonts/defaultSpriteFont"))
             {
-
                 Position = new Vector2(100, 150),
                 Rectangle = new Rectangle(200, 300, 400, 150),
                 Text = "Quit"
@@ -58,11 +57,8 @@ namespace sccs
 
             foreach (var button in buttons)
             {
-
                 button.Update(gameTime);
-
             }
-
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)

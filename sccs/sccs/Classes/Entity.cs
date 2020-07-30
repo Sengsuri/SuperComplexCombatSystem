@@ -22,14 +22,13 @@ namespace sccs
 
         public int Speed;
 
-        protected Vector2 _position;
+        public bool doingAction;
 
-        protected Texture2D texture;
+        protected Vector2 _position;
 
         protected AnimationEngine animationEngine;
 
-        protected Dictionary<string, Animation> animations;
-
+        protected Texture2D texture;
 
         public Vector2 Position { get { return _position; } set { _position = value; if (animationEngine != null) animationEngine.position = _position; } }
         public Rectangle dRect
