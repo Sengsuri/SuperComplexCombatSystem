@@ -39,8 +39,8 @@ namespace sccs
 
             IsMouseVisible = true;
             graphics.IsFullScreen = true;
-            graphics.PreferredBackBufferWidth = 1920;///this is the actual size of the window 
-            graphics.PreferredBackBufferHeight = 1080;
+            graphics.PreferredBackBufferWidth = 2560;///this is the actual size of the window 
+            graphics.PreferredBackBufferHeight = 1440;
             graphics.ApplyChanges();
 
 

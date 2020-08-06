@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sccs.Classes;
 using sccs.Engines;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,15 @@ using System.Threading.Tasks;
 
 namespace sccs
 {
-
-
     class Player : Entity, IPhysics
     {
         public Character character;
 
         Input Input;
+
+        List<Weapon> weapons;
+
+        Weapon currentWeapon;
 
         /// <summary>
         /// The PowerPoint system determines how powerful a loadout is and is for balancing purposes
@@ -51,7 +54,7 @@ namespace sccs
             Scale = 1;
             Position = startingPosition;
             this.physicsEngine = physicsEngine;
-
+            exists = true;
             Input = new Input();
         }
 
@@ -59,8 +62,8 @@ namespace sccs
         public override void LoadTexture(ContentManager content)
         {
             animationEngine = new AnimationEngine();
-
-            character = new EricGriffin(animationEngine);
+            //just remember when using multiples of the same character to alway create a new instance of that character 
+            character = new EricGriffin(animationEngine, elementEngine);
             character.LoadTextures(content);
             Speed = character.speed;
             if (character.texture != null)
@@ -68,7 +71,6 @@ namespace sccs
                 texture = character.texture;
             }
             animationEngine.animation = character.animations["Idle"];
-
         }
         public override void Update(GameTime gameTime, List<IPhysics> entities)
         {
@@ -84,19 +86,25 @@ namespace sccs
             }
             if (keyState.IsKeyDown(Input.Up))
             {
-                Velocity.Y = -Speed - boost;
+                Velocity.Y = -character.speed - boost;
             }
             if (keyState.IsKeyDown(Input.Left))
             {
-                Velocity.X = -Speed - boost;
+                Velocity.X = -character.speed - boost;
             }
             if (keyState.IsKeyDown(Input.Down))
             {
-                Velocity.Y = Speed + boost;
+                Velocity.Y = character.speed + boost;
             }
             if (keyState.IsKeyDown(Input.Right))
             {
-                Velocity.X = Speed + boost;
+                Velocity.X = character.speed + boost;
+            }
+
+            if (keyState.IsKeyDown(Input.Primary))
+            {
+                doingAction = true;
+                //TODO: add attack 
             }
 
             if (boost > 0)
@@ -109,6 +117,8 @@ namespace sccs
             character.Regen(gameTime);
 
             physicsEngine.detectCollision(entities, this);
+
+            doingAction = false;
 
             Move(Velocity);
 
@@ -155,7 +165,14 @@ namespace sccs
             {
                 Velocity = Vector2.Zero;
             }
-            //implement enemy and bullet collisions
+            if (entity is Projectile)
+            {
+                Projectile projectile = (Projectile)entity;
+                character.SubtractHealth(projectile.damage, projectile.element, projectile.statusEffect);
+            }
+
+            //TODO:implement enemy and bullet collisions
+            //also TODO: make a better implementation
         }
     }
 }

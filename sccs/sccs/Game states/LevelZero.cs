@@ -47,6 +47,21 @@ namespace sccs
                     { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
                     { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
                     { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
+                    { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
+                    { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
+                    { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
+                    { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
+                    { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
+                    { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
+                    { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
+                    { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
+                    { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
+                    { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
+                    { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
+                    { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
+                    { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
+                    { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
+                    { W,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,W},
                     { E,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,E} });
 
             foreach (Tile tile in tileMap.tileMap)
@@ -63,10 +78,7 @@ namespace sccs
             entities.Add(new EvilSquare(new Vector2(100, 100), physicsEngine));
 
             //weapons will be managed by each character, they are added within the levelState for testing purposes
-            entities.Add(new Weapon(content.Load<Texture2D>("Weapons/bullet"), new Vector2(200, 100)));//bullet
-            entities.Add(new Weapon(content.Load<Texture2D>("Weapons/bullet-casing"), new Vector2(210, 100)));//bullet casing
-            entities.Add(new Weapon(content.Load<Texture2D>("Weapons/katana"), new Vector2(220, 100)));//katana
-            entities.Add(new Weapon(content.Load<Texture2D>("Weapons/m911"), new Vector2(230, 100)));//gun
+
             foreach (Entity entity in entities)
             {
                 entity.LoadTexture(content);
@@ -96,7 +108,6 @@ namespace sccs
 
             graphicsDevice.SetRenderTarget(null);
             graphicsDevice.Clear(Color.CornflowerBlue);
-
 
             spriteBatch.Begin(transformMatrix: camera.Transform * _game.scale);
             tileMap.Draw(spriteBatch);

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sccs.Engines
+namespace sccs
 {
     /// <summary>
     /// How this element engine works is that it takes in the element from an attack and compares it to it's own
@@ -13,6 +13,7 @@ namespace sccs.Engines
     /// </summary>
     public class ElementEngine
     {
+        //TODO: tweak this so it makes sense
         public enum Elements
         {
             NORMAL, FIRE, WATER, METAL, EXPLOSION, ICE, WIND, EARTH, POISON, DARK, LIGHT, PLANT
@@ -49,7 +50,7 @@ namespace sccs.Engines
                     damageMod = Earth(AtkElement);
                     break;
                 case Elements.POISON:
-                    damageMod = Poision(AtkElement);
+                    damageMod = Poison(AtkElement);
                     break;
                 case Elements.DARK:
                     damageMod = Dark(AtkElement);
@@ -63,6 +64,8 @@ namespace sccs.Engines
             }
             return damageMod;
         }
+
+        #region Methods
 
         private float Normal(Elements element)
         {
@@ -102,7 +105,6 @@ namespace sccs.Engines
                 case Elements.PLANT:
                     damageMod = 1.5f;
                     break;
-
             }
 
             return damageMod;
@@ -114,9 +116,11 @@ namespace sccs.Engines
             switch (element)
             {
                 case Elements.POISON:
+                case Elements.LIGHT:
                     damageMod = 0.5f;
                     break;
                 case Elements.EARTH:
+                case Elements.EXPLOSION:
                     damageMod = 1.5f;
                     break;
             }
@@ -126,12 +130,25 @@ namespace sccs.Engines
         {
             float damageMod = 1;
 
+            switch (element)
+            {
+                case Elements.WATER:
+                    damageMod = 0.5f;
+                    break;
+            }
             return damageMod;
         }
         private float Ice(Elements element)
         {
             float damageMod = 1;
 
+            switch (element)
+            {
+                case Elements.FIRE:
+                    damageMod = 1.5f;
+                    break;
+
+            }
             return damageMod;
         }
         private float Wind(Elements element)
@@ -143,10 +160,16 @@ namespace sccs.Engines
         private float Earth(Elements element)
         {
             float damageMod = 1;
-
+            switch (element)
+            {
+                case Elements.PLANT:
+                case Elements.EXPLOSION:
+                    damageMod = 2;
+                    break;
+            }
             return damageMod;
         }
-        private float Poision(Elements element)
+        private float Poison(Elements element)
         {
             float damageMod = 1;
 
@@ -155,7 +178,12 @@ namespace sccs.Engines
         private float Dark(Elements element)
         {
             float damageMod = 1;
-
+            switch (element)
+            {
+                case Elements.LIGHT:
+                    damageMod = 1.5f;
+                    break;
+            }
             return damageMod;
         }
         private float Light(Elements element)
@@ -167,8 +195,18 @@ namespace sccs.Engines
         private float Plant(Elements element)
         {
             float damageMod = 1;
+            switch (element)
+            {
+                case Elements.POISON:
+                    damageMod = 1.5f;
+                    break;
+                case Elements.FIRE:
+                    damageMod = 2;
+                    break;
+            }
 
             return damageMod;
         }
+        #endregion
     }
 }

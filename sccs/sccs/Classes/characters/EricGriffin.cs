@@ -10,20 +10,20 @@ namespace sccs
 {
     public class EricGriffin : Character
     {
-        public override int speed { get { return 3; } }
-        public override int maxSpeed { get { return 5; } }
+        public override int speed { get { return 3; } set { _ = speed; } }
+        public override int maxSpeed { get { return 5; } set { _ = maxSpeed; } }
         public override float maxStamina { get { return 100; } }
-        public override float regenStamina { get { return 100f; } }
+        public override float regenStamina { get { return 100f; } set { _ = regenStamina; } }
         public override float maxMana { get { return 100; } }
-        public override float regenMana { get { return 1f; } }
-        public override float maxHealth { get { return 100; } }
+        public override float regenMana { get { return 1f; } set { _ = regenMana; } }
+        public override float maxHealth { get { return 100; } set { _ = maxHealth; } }
+        public override string description { get { return "boy HE FAT"; } }
+        public override ElementEngine.Elements element { get { return ElementEngine.Elements.NORMAL; } }
 
-
-        public EricGriffin(AnimationEngine animationEngine) : base(animationEngine)
+        public EricGriffin(AnimationEngine animationEngine, ElementEngine elementEngine)
+            : base(animationEngine, elementEngine)
         {
-            health = maxHealth;
-            stamina = maxStamina;
-            mana = maxMana;
+
         }
 
         public override void LoadTextures(ContentManager content)
@@ -65,5 +65,15 @@ namespace sccs
             animationEngine.Play(animations["WalkUp"]);
         }
         #endregion
+
+
+        /// <summary>
+        /// You must override the ToString method in order to get the name to show up correctly
+        /// </summary>
+        /// <returns>The name of the character</returns>
+        public override string ToString()
+        {
+            return "Eric Griffin";
+        }
     }
 }

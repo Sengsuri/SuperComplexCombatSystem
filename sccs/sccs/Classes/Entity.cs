@@ -24,9 +24,13 @@ namespace sccs
 
         public bool doingAction;
 
+        public bool exists;
+
         protected Vector2 _position;
 
         protected AnimationEngine animationEngine;
+
+        protected ElementEngine elementEngine;
 
         protected Texture2D texture;
 

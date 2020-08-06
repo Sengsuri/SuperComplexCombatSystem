@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using sccs.Engines;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +9,20 @@ using System.Threading.Tasks;
 
 namespace sccs
 {
-    public class Weapon : Entity
+    public abstract class Weapon : Entity
     {
-        public int damage;
+        public abstract int damage { get; }
+
+        protected PhysicsEngine physicsEngine;
 
         //temp constructor for creative purposes, might be permanent
-        public Weapon(Texture2D texture, Vector2 startingPosition)
+        public Weapon(ElementEngine elementEngine, PhysicsEngine physicsEngine)
         {
-            this.texture = texture;
-            Position = startingPosition;
+            this.elementEngine = elementEngine;
+            this.physicsEngine = physicsEngine;
             Scale = 1;
         }
+        public abstract void Attack();
 
     }
 }

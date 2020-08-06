@@ -47,8 +47,11 @@
     <Compile Include="Classes\Entity.cs" />
     <Compile Include="Classes\EvilSquare.cs" />
     <Compile Include="Classes\Player.cs" />
+    <Compile Include="Classes\Projectile.cs" />
+    <Compile Include="Classes\StatusEffect.cs" />
     <Compile Include="Classes\Tile.cs" />
     <Compile Include="Classes\Weapon.cs" />
+    <Compile Include="Classes\weapons\GUN.cs" />
     <Compile Include="Engines\AnimationEngine.cs" />
     <Compile Include="Engines\Camera.cs" />
     <Compile Include="Classes\Character.cs" />
