@@ -66,3 +66,9 @@ C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\s
 C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\obj\Debug\sccs.csproj.CopyComplete
 C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\UI\UIBar.xnb
 C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\UI\UIBarBackground.xnb
+C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\Effects\ColorChanger.xnb
+C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\DefualtCharacter\Arm.xnb
+C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\DefualtCharacter\Down.xnb
+C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\DefualtCharacter\Left.xnb
+C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\DefualtCharacter\Right.xnb
+C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\DefualtCharacter\Up.xnb

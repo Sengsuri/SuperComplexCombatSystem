@@ -43,6 +43,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Classes\Animation.cs" />
+    <Compile Include="Classes\BasicEnemyAI.cs" />
+    <Compile Include="Classes\characters\DefaultCharacter.cs" />
     <Compile Include="Classes\characters\EricGriffin.cs" />
     <Compile Include="Classes\Entity.cs" />
     <Compile Include="Classes\EvilSquare.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="Engines\TileMap.cs" />
     <Compile Include="Game states\GameState.cs" />
     <Compile Include="Game states\LevelZero.cs" />
+    <Compile Include="Game states\LoadoutState.cs" />
     <Compile Include="Game states\MenuState.cs" />
     <Compile Include="game.cs" />
     <Compile Include="Interfaces\IPhysics.cs" />

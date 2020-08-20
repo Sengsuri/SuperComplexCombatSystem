@@ -36,15 +36,16 @@ namespace sccs
         const int regenRate = 1;
 
         public Action Attack;
-        //TODO: make a list of special attacks        
-
+        //TODO: make a list of special attacks
 
         //TODO: make a way to draw the status effects
         public List<StatusEffect> statusEffects = new List<StatusEffect>();
 
-
+        public List<Action> specialAttacks;
 
         ElementEngine elementEngine;
+
+        //TODO:consider attack property? would make balancing weapons a bit easier
 
         #region Properties
         public bool isDead { get; set; }
@@ -65,7 +66,21 @@ namespace sccs
         public abstract ElementEngine.Elements element { get; }
         //this formula will have to be tweaked over time
         public float powerPoints { get { return (maxHealth) + (maxStamina * regenStamina) + (maxMana * regenMana) + (maxSpeed); } }
+
+        //TODO: figure out how to do special attacks because OH GOD HOW AM I GONNA BALANCE THIS??????
+        //as for the formula, it will be powerpoints - amount of special abilities^7/8. probs gonna change it cause I think it 
+        //could be better and it's probably trash anyways
+
         #endregion
+
+        public Texture2D armTexture;
+        public abstract Vector2 shoulderPivot { get; }///where the shoulder pivots on the character
+        public abstract Vector2 armPivot { get; }///where the arm pivots around
+        public abstract Vector2 handPoint { get; }///where the weaopons will be drawn, set by the modder. 
+                                                  ///the arm should be facing down,
+                                                  ///where the shoulder is above the hand 
+        private Vector2 _handPoint { get { return shoulderPivot - handPoint; } }//TODO: finish this
+        public float armRotation;
 
         public Character(AnimationEngine animationEngine, ElementEngine elementEngine)
         {
@@ -79,7 +94,12 @@ namespace sccs
 
         public abstract void LoadTextures(ContentManager content);
 
-        public void Update(GameTime gameTime)
+
+        /// <summary>
+        /// Update can be overrided so the chararcter can handle inputs for special attacks
+        /// </summary>
+        /// <param name="gameTime"></param>
+        public virtual void Update(GameTime gameTime)
         {
             //Miiiiiiiigghht need to change this because this will more than likely cause problems
             for (int i = 0; i <= statusEffects.Count; i++)
@@ -95,6 +115,8 @@ namespace sccs
             }
 
             Regen(gameTime);
+
+            //TODO: make it so that the arm rotates with the mouse
         }
 
         private void sortStatusEffects()
@@ -108,8 +130,6 @@ namespace sccs
                 status.ApplyStatus(this);
             }
         }
-
-
         public virtual void SubtractHealth(int damage)
         {
             ///you see, I could add logic that would make it so that health won't go below zero, but it would also be kind of funny to 
@@ -148,7 +168,7 @@ namespace sccs
             if (subtractTimer > 1 / value)
             {
                 if (stamina > 0)
-                    stamina -= 1 + regenRate;
+                    stamina -= 1 - regenRate;
                 else
                     stamina = 0;
                 subtractTimer = 0;
@@ -178,7 +198,6 @@ namespace sccs
                 mana = (mana + regenRate < maxMana) ? mana + regenRate : maxMana;
                 manaTimer = 0;
             }
-
         }
 
 
@@ -186,36 +205,28 @@ namespace sccs
         /// <summary>
         /// All characters must have at least an idle animation 
         /// </summary>
-        public abstract void Idle();
+        public virtual void Idle() { }
 
-        public virtual void WalkLeft()
-        {
+        public virtual void WalkLeft() { }
 
-        }
+        public virtual void WalkRight() { }
 
-        public virtual void WalkRight()
-        {
+        public virtual void WalkUp() { }
 
-        }
-
-        public virtual void WalkUp()
-        {
-
-        }
-
-        public virtual void WalkDown()
-        {
-
-        }
+        public virtual void WalkDown() { }
 
         public virtual void Die() /// me irl lol
         {
-
+            ///i think this is a death animation???? might have additional funcionality idk
         }
 
-        public virtual void BasicAttack()
+        public virtual void BasicAttack(Action attack)
         {
-
+            if (attack != null)
+            {
+                Attack = attack;
+                Attack();
+            }
         }
 
         public virtual void SpecialAttack()
@@ -229,5 +240,8 @@ namespace sccs
         }
 
         #endregion
+
+        public abstract Animation startingAnimation();
+        public abstract override string ToString();
     }
 }

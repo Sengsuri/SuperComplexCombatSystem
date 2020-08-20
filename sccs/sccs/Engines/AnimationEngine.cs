@@ -28,10 +28,6 @@ namespace sccs
         /// The parameter is for the starting animation
         /// </summary>
         /// <param name="animation"></param>
-        public AnimationEngine()
-        {
-        }
-
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(animation.texture,

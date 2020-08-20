@@ -32,9 +32,5 @@ namespace sccs
             this.frameCount = frameCount;
             this.frameTimes = frameTimes;
         }
-
-
-
-
     }
 }

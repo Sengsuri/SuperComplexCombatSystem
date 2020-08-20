@@ -12,7 +12,7 @@ namespace sccs
     /// <summary>
     /// an input wrapper that also takes settings from the config file
     /// </summary>
-    //TODO: have this class handle inputs so it simplifies code in other classes
+    //TODO: have this class handle inputs so it simplifies code in other classes    
     public class Input
     {
         public Keys Left;
@@ -24,6 +24,8 @@ namespace sccs
         public Keys Action2;
         public Keys Dodge;
         public Keys Sprint;
+        //TODO: add a COMBAT SHIFT key that adds extra macros, which could either make it so there's less buttons to press 
+        //or make it possible to have about 180 special attacks on a full sized keyboard
 
         public Input()
         {

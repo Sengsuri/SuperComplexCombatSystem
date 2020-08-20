@@ -17,7 +17,6 @@ namespace sccs
 
         protected game _game;
 
-
         public State(game _game, GraphicsDevice graphicsDevice, ContentManager content)
         {
             this.content = content;

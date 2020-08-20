@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sccs.Classes;
+using sccs.Classes.characters;
 using sccs.Engines;
 using System;
 using System.Collections.Generic;
@@ -63,24 +64,29 @@ namespace sccs
         {
             animationEngine = new AnimationEngine();
             //just remember when using multiples of the same character to alway create a new instance of that character 
-            character = new EricGriffin(animationEngine, elementEngine);
+            //character = new EricGriffin(animationEngine, elementEngine);
+            character = new DefaultCharacter(animationEngine, elementEngine);
             character.LoadTextures(content);
             Speed = character.speed;
             if (character.texture != null)
             {
                 texture = character.texture;
             }
-            animationEngine.animation = character.animations["Idle"];
+            animationEngine.animation = character.startingAnimation();
         }
         public override void Update(GameTime gameTime, List<IPhysics> entities)
         {
+            ///basic inputs such as moving and basic attacks are handled by this class.
+            ///any special attacks are handled by the character class, as well as any additional inputs
+
             KeyboardState keyState = Keyboard.GetState();
 
             int boost = 0;
             Velocity = Vector2.Zero;
 
-
-            if (keyState.IsKeyDown(Input.Sprint) && character.stamina > 0)
+            //ihatethisihatethisihatethisihatethisihatethisihatethisihatethisihatethisihatethis
+            //TODO:god i want to chnage this implementation so bad
+            if (keyState.IsKeyDown(Input.Sprint) && character.stamina > sprintStamina)
             {
                 boost = character.maxSpeed - Speed;
             }
@@ -100,11 +106,10 @@ namespace sccs
             {
                 Velocity.X = character.speed + boost;
             }
-
             if (keyState.IsKeyDown(Input.Primary))
             {
                 doingAction = true;
-                //TODO: add attack 
+                character.BasicAttack(currentWeapon.Attack);
             }
 
             if (boost > 0)
@@ -123,11 +128,6 @@ namespace sccs
             Move(Velocity);
 
             base.Update(gameTime, entities);
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            base.Draw(spriteBatch);
         }
 
         private void Move(Vector2 velocity)///change the animation here

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -19,12 +20,13 @@ namespace sccs
         public override float maxHealth { get { return 100; } set { _ = maxHealth; } }
         public override string description { get { return "boy HE FAT"; } }
         public override ElementEngine.Elements element { get { return ElementEngine.Elements.NORMAL; } }
+        public override Vector2 shoulderPivot => throw new NotImplementedException();
+        public override Vector2 handPoint => throw new NotImplementedException();
+        public override Vector2 armPivot => throw new NotImplementedException();
 
         public EricGriffin(AnimationEngine animationEngine, ElementEngine elementEngine)
             : base(animationEngine, elementEngine)
-        {
-
-        }
+        { }
 
         public override void LoadTextures(ContentManager content)
         {
@@ -74,6 +76,11 @@ namespace sccs
         public override string ToString()
         {
             return "Eric Griffin";
+        }
+
+        public override Animation startingAnimation()
+        {
+            throw new NotImplementedException();
         }
     }
 }
