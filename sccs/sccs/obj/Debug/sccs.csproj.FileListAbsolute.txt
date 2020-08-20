@@ -72,3 +72,8 @@ C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\s
 C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\DefualtCharacter\Left.xnb
 C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\DefualtCharacter\Right.xnb
 C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\DefualtCharacter\Up.xnb
+C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\DefaultCharacter\Arm.xnb
+C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\DefaultCharacter\Down.xnb
+C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\DefaultCharacter\Left.xnb
+C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\DefaultCharacter\Right.xnb
+C:\Users\aweso\AppData\Local\gitkraken\app-7.1.0\SuperComplexCombatSystem\sccs\sccs\bin\DesktopGL\AnyCPU\Debug\Content\DefaultCharacter\Up.xnb

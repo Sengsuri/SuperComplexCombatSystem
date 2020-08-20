@@ -38,9 +38,9 @@ namespace sccs
             Left = Keys.A;
             Down = Keys.S;
             Right = Keys.D;
-            Primary = Keys.A;
-            Action1 = Keys.A;
-            Action2 = Keys.A;
+            //Primary = Keys.A;
+            //Action1 = Keys.A;
+            //Action2 = Keys.A;
             Dodge = Keys.Space;
             Sprint = Keys.LeftShift;
 

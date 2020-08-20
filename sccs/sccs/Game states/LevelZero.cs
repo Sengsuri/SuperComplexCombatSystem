@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -79,10 +80,10 @@ namespace sccs
 
             //weapons will be managed by each character, they are added within the levelState for testing purposes
 
-            foreach (Entity entity in entities)
-            {
-                entity.LoadTexture(content);
-            }
+                foreach (Entity entity in entities)
+                {
+                    entity.LoadTexture(content);
+                }
             interactables.Add((IPhysics)entities.Find(x => x is Player));
             interactables.Add((IPhysics)entities.Find(x => x is EvilSquare));
         }

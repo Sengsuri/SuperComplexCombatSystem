@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/DefualtCharacter/Up.png</SourceFile>
+  <SourceFile>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/DefaultCharacter/Up.png</SourceFile>
   <SourceTime>2020-08-19T13:43:35.2648569-05:00</SourceTime>
-  <DestFile>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/bin/DesktopGL/DefualtCharacter/Up.xnb</DestFile>
-  <DestTime>2020-08-19T15:03:32.4623513-05:00</DestTime>
+  <DestFile>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/bin/DesktopGL/Content/DefaultCharacter/Up.xnb</DestFile>
+  <DestTime>2020-08-20T14:26:16.765286-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T10:35:54-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

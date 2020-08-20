@@ -33,8 +33,6 @@ namespace sccs.Classes.characters
 
         public override void LoadTextures(ContentManager content)
         {
-            try
-            {
                 animations = new Dictionary<string, Animation>()
             {
                 {"WalkUp", new Animation(content.Load<Texture2D>("DefaultCharacter/Up"),1,1)},
@@ -43,11 +41,8 @@ namespace sccs.Classes.characters
                 {"WalkLeft", new Animation(content.Load<Texture2D>("DefaultCharacter/Left"),1,1)}
             };
                 armTexture = content.Load<Texture2D>("DefaultCharacter/arm");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
+            
+
 
         }
 

@@ -147,11 +147,11 @@ namespace sccs
                     character.WalkRight();
                 }
             }
-            else if (velocity.Y < 0)
+            else if (velocity.Y > 0)
             {
                 character.WalkDown();
             }
-            else if (velocity.Y > 0)
+            else if (velocity.Y < 0)
             {
                 character.WalkUp();
             }

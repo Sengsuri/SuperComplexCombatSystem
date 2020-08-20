@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace sccs
 {
@@ -38,9 +39,9 @@ namespace sccs
             base.Initialize();///initializes the graphics device and calls LoadContent(). should have all the code below so the tilemap textures are loaded before it's generated          
 
             IsMouseVisible = true;
-            graphics.IsFullScreen = true;
-            graphics.PreferredBackBufferWidth = 2560;///this is the actual size of the window 
-            graphics.PreferredBackBufferHeight = 1440;
+            graphics.IsFullScreen = false;
+            graphics.PreferredBackBufferWidth = 1920;///this is the actual size of the window 
+            graphics.PreferredBackBufferHeight = 1080;
             graphics.ApplyChanges();
 
 
@@ -88,11 +89,9 @@ namespace sccs
                 nextState = null;
             }
 
+                currentState.Update(gameTime);
 
-            currentState.Update(gameTime);
-
-            base.Update(gameTime);
-
+                base.Update(gameTime);
         }
 
         /// <summary>

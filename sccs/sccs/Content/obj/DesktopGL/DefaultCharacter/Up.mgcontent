@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/Weapons/bullet.png</SourceFile>
-  <SourceTime>2020-07-04T22:55:33.1138102-05:00</SourceTime>
-  <DestFile>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/bin/DesktopGL/Weapons/bullet.xnb</DestFile>
-  <DestTime>2020-08-20T14:26:10.1100108-05:00</DestTime>
+  <SourceFile>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/DefaultCharacter/Up.png</SourceFile>
+  <SourceTime>2020-08-19T13:43:35.2648569-05:00</SourceTime>
+  <DestFile>C:/Users/aweso/AppData/Local/gitkraken/app-7.1.0/SuperComplexCombatSystem/sccs/sccs/Content/bin/DesktopGL/DefaultCharacter/Up.xnb</DestFile>
+  <DestTime>2020-08-20T14:26:09.7216572-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T10:35:54-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
