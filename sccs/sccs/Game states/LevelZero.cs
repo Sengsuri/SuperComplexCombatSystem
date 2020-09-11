@@ -16,9 +16,9 @@ namespace sccs
     /// This level will not exist in the game and is a testing ground for things
     /// </summary>
     /// Levels are inherited from GameState, which is inherited from State.
+    /// They manage the tile map and all the other entities, while the game state handles the rest
     public class LevelZero : GameState
     {
-
         TileMap tileMap;
         public LevelZero(game _game, GraphicsDevice graphicsDevice, ContentManager content)
              : base(_game, graphicsDevice, content)
@@ -76,23 +76,26 @@ namespace sccs
 
 
             entities.Add(new Player(new Vector2(50, 50), physicsEngine));
-            entities.Add(new EvilSquare(new Vector2(100, 100), physicsEngine));
+            entities.Add(new BasicEnemyAI(new Vector2(100, 100), physicsEngine));
 
             //weapons will be managed by each character, they are added within the levelState for testing purposes
 
-                foreach (Entity entity in entities)
-                {
-                    entity.LoadTexture(content);
-                }
+            foreach (Entity entity in entities)
+            {
+                entity.LoadTexture(content);
+            }
             interactables.Add((IPhysics)entities.Find(x => x is Player));
-            interactables.Add((IPhysics)entities.Find(x => x is EvilSquare));
+            interactables.Add((IPhysics)entities.Find(x => x is BasicEnemyAI));
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            camera.Follow(entities.Find(x => x is Player));
+            Player player = (Player)entities.Find(x => x is Player);
+            camera.Follow(player);
+            player.centerOfScreen = new Vector2(gameWidth, gameHeight);
 
+            //TODO: eventually remove this
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 _game.Exit();
@@ -106,11 +109,10 @@ namespace sccs
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-
             graphicsDevice.SetRenderTarget(null);
             graphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin(transformMatrix: camera.Transform * _game.scale);
+            spriteBatch.Begin(transformMatrix: camera.Transform * _game.scale, samplerState: SamplerState.PointClamp);
             tileMap.Draw(spriteBatch);
             foreach (Entity entity in entities)
             {

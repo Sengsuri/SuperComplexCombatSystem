@@ -26,7 +26,7 @@ namespace sccs
 
         protected List<IPhysics> interactables;///interactables are things that use physics
 
-        protected RenderTarget2D renderTarget;///the render target is the base resolution that the game is in. the graphics class will then scale the render target to the right size
+        //protected RenderTarget2D renderTarget;///the render target is the base resolution that the game is in. the graphics class will then scale the render target to the right size
 
         protected RenderTarget2D UIRender;
 
@@ -35,12 +35,14 @@ namespace sccs
         public static int gameHeight;
         public static int gameWidth;
 
-        private static int windowWidth;
-        private static int windowHeight;
+        //private static int windowWidth;
+        //private static int windowHeight;
 
         Bar stamina;
         Bar mana;
         Bar health;
+
+        Effect colorChanger;
 
         public GameState(game _game, GraphicsDevice graphicsDevice, ContentManager content)
              : base(_game, graphicsDevice, content)
@@ -48,8 +50,8 @@ namespace sccs
             physicsEngine = new PhysicsEngine();
 
 
-            windowWidth = graphicsDevice.Viewport.Width;
-            windowHeight = graphicsDevice.Viewport.Height;
+            //windowWidth = graphicsDevice.Viewport.Width;
+            //windowHeight = graphicsDevice.Viewport.Height;
 
             //outputAspect = windowWidth / (float)windowHeight;
 
@@ -68,11 +70,16 @@ namespace sccs
             //    dst = new Rectangle(barWidth, 0, presentWidth, windowHeight);
             //}            
 
-            renderTarget = new RenderTarget2D(graphicsDevice, 800, 450);
+            //renderTarget = new RenderTarget2D(graphicsDevice, 800, 450);
 
 
-            gameWidth = renderTarget.Width;
-            gameHeight = renderTarget.Height;
+            //gameWidth = renderTarget.Width;
+            //gameHeight = renderTarget.Height;
+
+            gameWidth = 800;
+            gameHeight = 450;
+
+            colorChanger = content.Load<Effect>("Effects/ColorChanger");
 
             interactables = new List<IPhysics>();
 
@@ -98,8 +105,7 @@ namespace sccs
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
-
+            base.Update(gameTime);           
             ///update UI logic
             Player player = (Player)entities.Find(x => x is Player);
 
@@ -127,8 +133,13 @@ namespace sccs
 
             //spriteBatch.End();
 
+            //here's how effects will work. if 
+
+            
+
             ///update UI draw
-            spriteBatch.Begin(transformMatrix: _game.scale);
+            spriteBatch.Begin(SpriteSortMode.Immediate, transformMatrix: _game.scale);
+
             foreach (Bar bar in bars)
             {
                 bar.Draw(spriteBatch);

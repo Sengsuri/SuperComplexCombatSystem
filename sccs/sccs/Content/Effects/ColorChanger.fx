@@ -9,6 +9,17 @@
 
 matrix WorldViewProjection;
 
+//Interpolation for gradient: x = primaryColor + (primaryColor - secondaryColor) * percent
+
+//parameters
+ float4 tint;
+Texture2D SpriteTexture;
+sampler2D SpriteTextureSampler = sampler_state
+{
+	Texture = <SpriteTexture>;
+};
+
+
 struct VertexShaderInput
 {
 	float4 Position : POSITION0;
@@ -20,6 +31,7 @@ struct VertexShaderOutput
 	float4 Position : SV_POSITION;
 	float4 Color : COLOR0;
 };
+
 
 VertexShaderOutput MainVS(in VertexShaderInput input)
 {
@@ -33,6 +45,8 @@ VertexShaderOutput MainVS(in VertexShaderInput input)
 
 float4 MainPS(VertexShaderOutput input) : COLOR
 {
+	float4 output = input.Color * tint;
+
 	return input.Color;
 }
 

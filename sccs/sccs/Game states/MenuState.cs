@@ -12,9 +12,7 @@ namespace sccs
 {
     public class MenuState : State
     {
-
         List<Button> buttons = new List<Button>();
-
 
         public MenuState(game _game, GraphicsDevice graphicsDevice, ContentManager content)
             : base(_game, graphicsDevice, content)

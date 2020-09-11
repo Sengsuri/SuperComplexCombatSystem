@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using sccs.Engines;
 using System;
 using System.Collections.Generic;
@@ -49,18 +50,18 @@ namespace sccs
 
         #region Properties
         public bool isDead { get; set; }
-        public abstract int speed { get; set; }
-        public abstract int maxSpeed { get; set; }
+        public abstract int speed { get; }
+        public abstract int maxSpeed { get; }
         public float stamina { get; set; }
         public abstract float maxStamina { get; }
         /// <summary>
         /// The rate of stamina regenerated
         /// </summary>
-        public abstract float regenStamina { get; set; }
+        public abstract float regenStamina { get; }
         public abstract float maxMana { get; }
         public float mana { get; set; }
-        public abstract float regenMana { get; set; }
-        public abstract float maxHealth { get; set; }
+        public abstract float regenMana { get; }
+        public abstract float maxHealth { get; }
         public float health { get; set; }
         public abstract string description { get; }
         public abstract ElementEngine.Elements element { get; }
@@ -73,14 +74,16 @@ namespace sccs
 
         #endregion
 
+        //TODO: pass a reference to the entities timer list so the character class could use the timers as well
+
         public Texture2D armTexture;
         public abstract Vector2 shoulderPivot { get; }///where the shoulder pivots on the character
-        public abstract Vector2 armPivot { get; }///where the arm pivots around
-        public abstract Vector2 handPoint { get; }///where the weaopons will be drawn, set by the modder. 
-                                                  ///the arm should be facing down,
-                                                  ///where the shoulder is above the hand 
-        private Vector2 _handPoint { get { return shoulderPivot - handPoint; } }//TODO: finish this
-        public float armRotation;
+        public abstract Vector2 armPivot { get; }///the orgin of the arm
+        protected abstract Vector2 handPoint { get; }///where the weaopons will be drawn, set by the modder. 
+                                                     ///the arm should be facing down,
+                                                     ///where the shoulder is above the hand 
+        public Vector2 _handPoint { get { return shoulderPivot - handPoint; } }//TODO: figure this shit out 
+        public float armRotation { get; set; }
 
         public Character(AnimationEngine animationEngine, ElementEngine elementEngine)
         {
@@ -113,10 +116,16 @@ namespace sccs
                     sortStatusEffects();
                 }
             }
+        }
 
-            Regen(gameTime);
+        [Obsolete]
+        public virtual void Draw(SpriteBatch spriteBatch, Vector2 position)
+        {
+            if (armTexture != null)
+            {
+                spriteBatch.Draw(armTexture, shoulderPivot + position, rotation: armRotation, origin: armPivot);
+            }
 
-            //TODO: make it so that the arm rotates with the mouse
         }
 
         private void sortStatusEffects()
@@ -155,33 +164,25 @@ namespace sccs
                 statusEffects.Add(statusEffect);
             }
         }
-
         public virtual void AddHealth(int heal)
         {
             health = (health + heal > maxHealth) ? maxHealth : health + heal;
         }
-
         public virtual void SubtractStamina(int value, GameTime gameTime)
         {
             subtractTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (subtractTimer > 1 / value)
+            if (subtractTimer < regenRate)
             {
                 if (stamina > 0)
-                    stamina -= 1 - regenRate;
+                    stamina -= 1 + value;
                 else
                     stamina = 0;
                 subtractTimer = 0;
             }
 
         }
-        /// <summary>
-        /// regenerate both mana and stamina
-        /// </summary>
-        /// <param name="gameTime"></param>
-        public virtual void Regen(GameTime gameTime)
+        public virtual void RegenStamina(GameTime gameTime)
         {
-            ///Regenerate stamina
             staminaTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (staminaTimer > 1 / regenStamina)
@@ -189,7 +190,9 @@ namespace sccs
                 stamina = (stamina + regenRate < maxStamina) ? stamina + regenRate : maxStamina;
                 staminaTimer = 0;
             }
-
+        }
+        public virtual void RegenMana(GameTime gameTime)
+        {
             ///regenerate mana
             manaTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -199,7 +202,6 @@ namespace sccs
                 manaTimer = 0;
             }
         }
-
 
         #region MovementAndActions
         /// <summary>
@@ -222,11 +224,9 @@ namespace sccs
 
         public virtual void BasicAttack(Action attack)
         {
-            if (attack != null)
-            {
-                Attack = attack;
-                Attack();
-            }
+            Attack = attack;
+
+            Attack?.Invoke();
         }
 
         public virtual void SpecialAttack()

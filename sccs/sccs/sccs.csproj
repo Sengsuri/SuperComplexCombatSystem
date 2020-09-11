@@ -47,7 +47,7 @@
     <Compile Include="Classes\characters\DefaultCharacter.cs" />
     <Compile Include="Classes\characters\EricGriffin.cs" />
     <Compile Include="Classes\Entity.cs" />
-    <Compile Include="Classes\EvilSquare.cs" />
+    <Compile Include="Classes\characters\EvilSquare.cs" />
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Classes\Projectile.cs" />
     <Compile Include="Classes\StatusEffect.cs" />
@@ -62,11 +62,13 @@
     <Compile Include="Engines\PhysicsEngine.cs" />
     <Compile Include="Engines\SoundEngine.cs" />
     <Compile Include="Engines\TileMap.cs" />
+    <Compile Include="Engines\Timer.cs" />
     <Compile Include="Game states\GameState.cs" />
     <Compile Include="Game states\LevelZero.cs" />
     <Compile Include="Game states\LoadoutState.cs" />
     <Compile Include="Game states\MenuState.cs" />
     <Compile Include="game.cs" />
+    <Compile Include="Interfaces\IEffect.cs" />
     <Compile Include="Interfaces\IPhysics.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

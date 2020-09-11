@@ -2,14 +2,10 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace sccs
 {
-    public class Bar
+    public class Bar : IEffect
     {
         Texture2D backgroundTexture;
 
@@ -24,6 +20,8 @@ namespace sccs
         Color color;///current color
 
         Vector2 position;
+
+        public Action ApplyEffects { get; set; }
 
         public Bar(Vector2 position, Color baseColor)
         {
@@ -44,6 +42,7 @@ namespace sccs
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            ApplyEffects?.Invoke();
             spriteBatch.Draw(backgroundTexture, position);
             Rectangle r = new Rectangle((int)position.X + 1, (int)position.Y + 1, (int)barWidth, barTexture.Height);
             spriteBatch.Draw(barTexture, r, color);

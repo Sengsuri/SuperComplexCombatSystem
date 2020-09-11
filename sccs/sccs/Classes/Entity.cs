@@ -34,6 +34,8 @@ namespace sccs
 
         protected Texture2D texture;
 
+        protected List<Timer> timers = new List<Timer>();
+
         public Vector2 Position { get { return _position; } set { _position = value; if (animationEngine != null) animationEngine.position = _position; } }
         public Rectangle dRect
         {
@@ -58,7 +60,10 @@ namespace sccs
 
         public virtual void Update(GameTime gameTime, List<IPhysics> entities)
         {
-
+            foreach (Timer timer in timers)
+            {
+                timer.Update(gameTime);
+            }
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)

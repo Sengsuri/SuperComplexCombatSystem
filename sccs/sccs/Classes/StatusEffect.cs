@@ -55,10 +55,10 @@ namespace sccs
             staminaRevert = character.regenStamina;
             manaRevert = character.regenMana;
 
-            character.speed += (int)speedEffect;
-            character.maxHealth += healthEffect;
-            character.regenStamina += staminaEffect;
-            character.regenMana += manaEffect;
+            //character.speed += (int)speedEffect;
+            //character.maxHealth += healthEffect;
+            //character.regenStamina += staminaEffect;
+            //character.regenMana += manaEffect;
 
             active = true;
         }

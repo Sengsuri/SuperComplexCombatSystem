@@ -30,14 +30,16 @@ namespace sccs
         /// <param name="animation"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(animation.texture,
+            if (animation != null)
+            {
+                spriteBatch.Draw(animation.texture,
              position,
              new Rectangle(animation.currentFrame * animation.frameWidth,
              0,
              animation.frameWidth,
              animation.frameHeight),
              Color.White);
-
+            }
         }
 
         /// <summary>

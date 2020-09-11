@@ -24,12 +24,14 @@ namespace sccs
 
         Weapon currentWeapon;
 
+        public Vector2 centerOfScreen { private get; set; }
+
         /// <summary>
         /// The PowerPoint system determines how powerful a loadout is and is for balancing purposes
         /// </summary>
         public int powerPoints { get { return (int)character.powerPoints; } }
 
-        const int sprintStamina = 10;
+        const int sprintStamina = 1;
 
         public Rectangle collisionBox
         {
@@ -59,12 +61,13 @@ namespace sccs
             Input = new Input();
         }
 
-
+        //TODO: have the level state send the character being used to the player
         public override void LoadTexture(ContentManager content)
         {
             animationEngine = new AnimationEngine();
             //just remember when using multiples of the same character to alway create a new instance of that character 
             //character = new EricGriffin(animationEngine, elementEngine);
+            //TODO: reference the elementEngine because it is never initialised 
             character = new DefaultCharacter(animationEngine, elementEngine);
             character.LoadTextures(content);
             Speed = character.speed;
@@ -72,7 +75,11 @@ namespace sccs
             {
                 texture = character.texture;
             }
-            animationEngine.animation = character.startingAnimation();
+            else
+            {
+                animationEngine.animation = character.startingAnimation();
+            }
+
         }
         public override void Update(GameTime gameTime, List<IPhysics> entities)
         {
@@ -86,9 +93,13 @@ namespace sccs
 
             //ihatethisihatethisihatethisihatethisihatethisihatethisihatethisihatethisihatethis
             //TODO:god i want to chnage this implementation so bad
-            if (keyState.IsKeyDown(Input.Sprint) && character.stamina > sprintStamina)
+            if (keyState.IsKeyDown(Input.Sprint) && character.stamina > 0)
             {
                 boost = character.maxSpeed - Speed;
+            }
+            else if (!keyState.IsKeyDown(Input.Sprint))
+            {
+                character.RegenStamina(gameTime);
             }
             if (keyState.IsKeyDown(Input.Up))
             {
@@ -117,9 +128,16 @@ namespace sccs
                 character.SubtractStamina(sprintStamina, gameTime);
             }
 
-            animationEngine.Update(gameTime);
 
-            character.Regen(gameTime);
+            MouseState mouse = Mouse.GetState();
+            Vector2 mousePosition = new Vector2(mouse.X, mouse.Y);
+
+            Vector2 direction = mousePosition - centerOfScreen;
+            direction.Normalize();
+
+            character.armRotation = (float)Math.Atan2(direction.Y, direction.X) + MathHelper.ToRadians(270);
+
+            animationEngine.Update(gameTime);
 
             physicsEngine.detectCollision(entities, this);
 
@@ -159,6 +177,13 @@ namespace sccs
             Position += velocity;
         }
 
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+            character.Draw(spriteBatch, Position);
+        }
+
         public void onCollision(IPhysics entity)
         {
             if (entity is Tile)///checks if the entity is a Tile and if it has a rectangle
@@ -171,7 +196,7 @@ namespace sccs
                 character.SubtractHealth(projectile.damage, projectile.element, projectile.statusEffect);
             }
 
-            //TODO:implement enemy and bullet collisions
+            //TODO:implement enemy collisions
             //also TODO: make a better implementation
         }
     }

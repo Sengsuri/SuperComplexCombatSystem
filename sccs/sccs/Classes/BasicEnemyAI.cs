@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace sccs.Classes
+namespace sccs
 {
     class BasicEnemyAI : Entity, IPhysics
     {
@@ -21,27 +21,85 @@ namespace sccs.Classes
 
         public Rectangle detectionBox;
 
+        const float wait = 0.5f;
+
+        const float action = 3f;
+
+        Timer timer;
+
+        Player player;
+
         public PhysicsEngine physicsEngine { get; private set; }
 
-        public Rectangle collisionBox => throw new NotImplementedException();
+        public Rectangle collisionBox
+        {
+            get
+            {
+                if (character.texture != null)
+                {
+                    return new Rectangle((int)Position.X, (int)Position.Y, character.texture.Width, character.texture.Height);
+                }
+                else if (animationEngine != null)
+                {
+                    return
+       new Rectangle((int)Position.X + 16, (int)Position.Y + 16, animationEngine.Width, animationEngine.Height);
+                }
+                else throw new Exception("Error making collisionBox, textures/animation are null");
+            }
+        }
+
+        public BasicEnemyAI(Vector2 startingPosition, PhysicsEngine physicsEngine)
+        {
+            Scale = 1;
+            Position = startingPosition;
+            this.physicsEngine = physicsEngine;
+            exists = true;
+            timer = new Timer();
+            timers.Add(timer);
+            timer.SetCoolDown(action, MoveToPlayer);
+        }
 
         public override void LoadTexture(ContentManager content)
         {
             animationEngine = new AnimationEngine();
-            //TODO: create character here. also set the speed
+            character = new EvilSquare(animationEngine, elementEngine);
+            character.LoadTextures(content);
+            Speed = character.speed;
 
+            if (character.texture != null)
+            {
+                texture = character.texture;
+            }
+            else
+            {
+                animationEngine.animation = character.startingAnimation();
+            }
         }
 
         public override void Update(GameTime gameTime, List<IPhysics> entities)
         {
+            player = (Player)entities.Find(x => x is Player);
+            
+            if (timer.timerDone)
+            {
+                if (timer.isCooldown)
+                {
+                    timer.SetCountDown(wait, null);
+                }
+                else
+                {
+                    timer.SetCoolDown(action, MoveToPlayer);
+                }
+            }
+
+            base.Update(gameTime, entities);
+        }
+
+        public void MoveToPlayer()
+        {
             //the npc will try to get close to the player, and when the npc is close enough it will attack
-
-            Player player = (Player)entities.Find(x => x is Player);
-
             Vector2 targetPosition = player.Position;
-
             Vector2 velocity = Vector2.Zero;
-
             if (Position.X != targetPosition.X)
             {
                 velocity.X = (targetPosition.X > Position.X) ? Speed : -Speed;
@@ -58,10 +116,6 @@ namespace sccs.Classes
             }
 
             Move(velocity);
-
-            Thread.Sleep(500);///pause for half a second
-
-            base.Update(gameTime, entities);
         }
 
         public void Move(Vector2 velocity)
@@ -95,7 +149,6 @@ namespace sccs.Classes
 
         public void onCollision(IPhysics entity)
         {
-            throw new NotImplementedException();
         }
     }
 }

@@ -11,18 +11,18 @@ namespace sccs
 {
     public class EricGriffin : Character
     {
-        public override int speed { get { return 3; } set { _ = speed; } }
-        public override int maxSpeed { get { return 5; } set { _ = maxSpeed; } }
+        public override int speed { get { return 3; }  }
+        public override int maxSpeed { get { return 5; }  }
         public override float maxStamina { get { return 100; } }
-        public override float regenStamina { get { return 100f; } set { _ = regenStamina; } }
+        public override float regenStamina { get { return 100f; }  }
         public override float maxMana { get { return 100; } }
-        public override float regenMana { get { return 1f; } set { _ = regenMana; } }
-        public override float maxHealth { get { return 100; } set { _ = maxHealth; } }
+        public override float regenMana { get { return 1f; }  }
+        public override float maxHealth { get { return 100; }  }
         public override string description { get { return "boy HE FAT"; } }
         public override ElementEngine.Elements element { get { return ElementEngine.Elements.NORMAL; } }
-        public override Vector2 shoulderPivot => throw new NotImplementedException();
-        public override Vector2 handPoint => throw new NotImplementedException();
-        public override Vector2 armPivot => throw new NotImplementedException();
+        public override Vector2 shoulderPivot { get { return new Vector2(0, 0); } }
+        protected override Vector2 handPoint => throw new NotImplementedException();
+        public override Vector2 armPivot { get { return new Vector2(0, 0); } }
 
         public EricGriffin(AnimationEngine animationEngine, ElementEngine elementEngine)
             : base(animationEngine, elementEngine)
@@ -33,8 +33,8 @@ namespace sccs
             animations = new Dictionary<string, Animation>()
             {
                 {"Idle",new Animation (content.Load<Texture2D>("eric-griffin/eric-griffin-idle"),2 , new float[]{5f, .5f })},
-                {"WalkUp",new Animation (content.Load<Texture2D>("eric-griffin/eric-griffin-walking-forward"), 4, .15f)},
-                {"WalkDown",new Animation (content.Load<Texture2D>("eric-griffin/eric-griffin-walking-back"), 1, .15f)},
+                {"WalkDown",new Animation (content.Load<Texture2D>("eric-griffin/eric-griffin-walking-forward"), 4, .15f)},
+                {"WalkUp",new Animation (content.Load<Texture2D>("eric-griffin/eric-griffin-walking-back"), 1, .15f)},
                 {"WalkRight",new Animation (content.Load<Texture2D>("eric-griffin/eric-griffin-walking-right"), 4, .15f)},
                 {"WalkLeft",new Animation (content.Load<Texture2D>("eric-griffin/eric-griffin-walking-left"), 4, .15f)}
             };
@@ -80,7 +80,7 @@ namespace sccs
 
         public override Animation startingAnimation()
         {
-            throw new NotImplementedException();
+            return animations["Idle"];
         }
     }
 }
